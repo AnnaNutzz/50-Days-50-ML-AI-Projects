@@ -9,17 +9,17 @@ It tries to model the relationship between an input variable `x` and an output v
 
 Linear Regression assumes a linear relationship between input and output:
 
-$ y = mx + b $
+$y = mx + b $
 
 Where:  
-- $ x $ = input (independent variable)  
-- $ y $ = output (dependent variable)  
-- $ m $ = slope (how much y changes for each unit change in x)  
-- $ b $ = intercept (value of y when x = 0)
+- $x $ = input (independent variable)  
+- $y $ = output (dependent variable)  
+- $m $ = slope (how much y changes for each unit change in x)  
+- $b $ = intercept (value of y when x = 0)
 
 Example:  
 Predicting exam score using hours studied →  
-$ y = \text{score}, \ x = \text{hours studied} $
+$y = \text{score}, \ x = \text{hours studied} $
 
 ---
 
@@ -48,33 +48,33 @@ We have the following dataset:
 # 1. Manual Calculations (Analytical Linear Regression)
 
 ### Mean of x  
-$ \text{Mean}(x) = \frac{8+10+12}{3} = 10 $
+$\text{Mean}(x) = \frac{8+10+12}{3} = 10 $
 
 ### Mean of y  
-$ \text{Mean}(y) = \frac{10+13+16}{3} = 13 $
+$\text{Mean}(y) = \frac{10+13+16}{3} = 13 $
 
 ### Deviations  
 - Dev(x) = x – Mean(x)  
 - Dev(y) = y – Mean(y)  
 
 ### Product of Deviations  
-$ \text{Dev}(x) \times \text{Dev}(y) $
+$\text{Dev}(x) \times \text{Dev}(y) $
 
 ### Slope (m)
 
-$ m = \frac{\sum (x - \bar{x})(y - \bar{y})}{\sum (x - \bar{x})^2} $
+$m = \frac{\sum (x - \bar{x})(y - \bar{y})}{\sum (x - \bar{x})^2} $
 
-$ m = \frac{12}{8} = 1.5 $
+$m = \frac{12}{8} = 1.5 $
 
 ### Intercept (b)
 
-$ b = \bar{y} - m\bar{x} $
+$b = \bar{y} - m\bar{x} $
 
-$ b = 13 - (1.5)(10) = -2 $
+$b = 13 - (1.5)(10) = -2 $
 
 ### Final Equation
 
-$ \boxed{y = 1.5x - 2} $
+$y = 1.5x - 2$
 
 This line perfectly fits the data.
 
@@ -117,12 +117,12 @@ Conceptually:
 
 ### Update Rules
 
-$ w = w - \alpha \cdot \frac{\partial MSE}{\partial w} $  
+$w = w - \alpha \cdot \frac{\partial MSE}{\partial w} $  
 
-$ b = b - \alpha \cdot \frac{\partial MSE}{\partial b} $
+$b = b - \alpha \cdot \frac{\partial MSE}{\partial b} $
 
 Where:
-- $ \alpha $ = learning rate (step size)  
+- $\alpha$ = learning rate (step size)  
 - Derivatives = gradient (slope of error curve)
 
 ---
