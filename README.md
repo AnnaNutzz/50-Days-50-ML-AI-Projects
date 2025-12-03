@@ -206,7 +206,7 @@ A complete public record of my journey into AI.
 **Ahana**  
 Email:  kaur.ahana02@gmail.com  
 LinkedIn:  https://www.linkedin.com/in/ahana-kaur-560408295/  
-Portfolio: coming soon  
+Portfolio: https://ahanaportfolio.vercel.app/
 
 ---
 
