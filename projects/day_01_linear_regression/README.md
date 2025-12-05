@@ -136,14 +136,14 @@ Where:
 
 # 5. Why the Gradient Descent Curve Looks Like This
 
-Your curve:
+My curve:
 
 - Starts **very high** → model is initially wrong  
 - Drops **very fast** → big errors = big gradients = big corrections  
 - Slowly **flattens** → model approaches the minimum  
 - Never hits exactly zero → tiny rounding + tiny gradients  
 
-This shape is **exactly correct** and expected.
+This shape is **correct** and expected.
 
 ---
 
