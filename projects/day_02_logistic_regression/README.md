@@ -19,26 +19,22 @@ The output variable is typically:
 
 ### Sigmoid Function
 
-$$
-\sigma(z) = \frac{1}{1 + e^{-z}}
-$$
+$$\sigma(z) = \frac{1}{1 + e^{-z}}$$
 
 Where:
-- $z $ is a linear combination of input features
+- $z$ is a linear combination of input features
 - The sigmoid squashes any real value into the range **(0, 1)**
 
 #### Properties of the sigmoid:
-- $\sigma(z) \to 1 $ as $z \to +\infty $
-- $\sigma(z) \to 0 $ as $z \to -\infty $
+- $\sigma(z) \to 1$ as $z \to +\infty$
+- $\sigma(z) \to 0$ as $z \to -\infty$
 - Always bounded between **0 and 1**
 
 Thus:
-$$
-P(y=1) = \sigma(z)
-$$
-$$
-P(y=0) = 1 - \sigma(z)
-$$
+
+$$P(y=1) = \sigma(z)$$
+
+$$P(y=0) = 1 - \sigma(z)$$
 
 ---
 
@@ -60,24 +56,20 @@ $$
 Logistic Regression models the **log of odds** of an event occurring.
 
 ### Odds
-$$
-\text{Odds} = \frac{P(x)}{1 - P(x)}
-$$
+$$\text{Odds} = \frac{P(x)}{1 - P(x)}$$
 
 Where:
 - Numerator → event occurs
 - Denominator → event does not occur
-- $1 $ represents the entire probability space
+- $1$ represents the entire probability space
 
 ### Log-Odds (Logit)
 
-$$
-\log\left(\frac{P(x)}{1 - P(x)}\right)
-$$
+$$\log\left(\frac{P(x)}{1 - P(x)}\right)$$
 
 Why log-odds?
 - Probability is bounded between 0 and 1
-- Log-odds range from $-\infty $ to $+\infty $
+- Log-odds range from $-\infty$ to $+\infty$
 - This makes it compatible with a **linear model**
 
 ---
@@ -86,23 +78,17 @@ Why log-odds?
 
 The log-odds are modeled as a linear equation:
 
-$
-\log(\text{odds}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p
-$
+$\log(\text{odds}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$
 
-- $\beta_0 $ → intercept
-- $\beta_i $ → coefficients
+- $\beta_0$ → intercept
+- $\beta_i$ → coefficients
 - Linear in parameters, non-linear in output probability
 
 ### Boundary Behavior
 
-$$
-P = 0 \Rightarrow \log\left(\frac{0}{1}\right) = -\infty
-$$
+$$P = 0 \Rightarrow \log\left(\frac{0}{1}\right) = -\infty$$
 
-$$
-P = 1 \Rightarrow \log\left(\frac{1}{0}\right) = +\infty
-$$
+$$P = 1 \Rightarrow \log\left(\frac{1}{0}\right) = +\infty$$
 
 This explains why **logits can span the entire real line**, while probabilities cannot.
 
@@ -112,16 +98,14 @@ This explains why **logits can span the entire real line**, while probabilities 
 
 For a single feature:
 
-$$
-y = \frac{1}{1 + e^{-(a_0 + a_1 x)}}
-$$
+$$y = \frac{1}{1 + e^{-(a_0 + a_1 x)}}$$
 
 Where:
-- $a_0 $ → intercept
-- $a_1 $ → coefficient
-- $x $ → independent variable
+- $a_0$ → intercept
+- $a_1$ → coefficient
+- $x$ → independent variable
 
-The parameters $a_0 $ and $a_1 $ are **learned from data** using:
+The parameters $a_0$ and $a_1$ are **learned from data** using:
 - Maximum Likelihood Estimation (MLE)
 - Gradient Descent optimization
 
@@ -141,20 +125,16 @@ Assume the following dataset:
 | 7 | 1 |
 
 After training, suppose the learned parameters are:
-- $a_0 = -1.5 $
-- $a_1 = 0.6 $
+- $a_0 = -1.5$
+- $a_1 = 0.6$
 
 ---
 
 ### Case 1: Student studied **5 hours**
 
-$$
-z = a_0 + a_1 x = -1.5 + 0.6 \times 5 = 1.5
-$$
+$$z = a_0 + a_1 x = -1.5 + 0.6 \times 5 = 1.5$$
 
-$$
-y = \frac{1}{1 + e^{-1.5}} \approx 0.817
-$$
+$$y = \frac{1}{1 + e^{-1.5}} \approx 0.817$$
 
 **Interpretation:**  
 The probability of passing is **81.7% → PASS**
@@ -163,13 +143,9 @@ The probability of passing is **81.7% → PASS**
 
 ### Case 2: Student studied **1.5 hours**
 
-$$
-z = -1.5 + 0.6 \times 1.5 = -0.6
-$$
+$$z = -1.5 + 0.6 \times 1.5 = -0.6$$
 
-$$
-y = \frac{1}{1 + e^{0.6}} \approx 0.354
-$$
+$$y = \frac{1}{1 + e^{0.6}} \approx 0.354$$
 
 **Interpretation:**  
 The probability of passing is **35.4% → FAIL**
@@ -180,22 +156,16 @@ The probability of passing is **35.4% → FAIL**
 
 The **decision boundary** is the point where the model is undecided:
 
-$$
-P(y=1) = 0.5
-$$
+$$P(y=1) = 0.5$$
 
 This occurs when:
 
-$$
-a_0 + a_1 x = 0
-\Rightarrow x = -\frac{a_0}{a_1}
-$$
+$$a_0 + a_1 x = 0
+\Rightarrow x = -\frac{a_0}{a_1}$$
 
 For this example:
 
-$
-x = \frac{1.5}{0.6} = 2.5
-$
+$x = \frac{1.5}{0.6} = 2.5$
 
 ### Interpretation:
 - If hours studied **< 2.5** → FAIL
@@ -228,14 +198,7 @@ $
 
 ## References
 
-- GeekForGeeks — Logistic Regression  
-  https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/
-
-- Learn Analytics — Logistic Regression (YouTube)  
-  https://www.youtube.com/watch?v=JuxX-hfRg1o
-
-- Visually Explained — Logistic Regression  
-  https://www.youtube.com/watch?v=3bvM3NyMiE0
-
-- Gate Smashers — Logistic Regression Lecture  
-  https://www.youtube.com/watch?v=r8OjlgWpAI0
+- [GeekForGeeks - machine learning - Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/) 
+- [Learn Analytics - 2. Logistic Regression – Introduction](https://www.youtube.com/watch?v=JuxX-hfRg1o&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=3) 
+- [Visually Explained - Logistic Regression (and why it's different from Linear Regression)](https://www.youtube.com/watch?v=3bvM3NyMiE0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=4) 
+- [Gate Smashers - Lec-5: Logistic Regression with Simplest & Easiest Example | Machine Learning](https://www.youtube.com/watch?v=r8OjlgWpAI0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=6)
