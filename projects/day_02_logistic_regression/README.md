@@ -201,14 +201,7 @@ $x = \frac{1.5}{0.6} = 2.5$
 
 ## References
 
-- GeekForGeeks — Logistic Regression  
-  https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/
-
-- Learn Analytics — Logistic Regression (YouTube)  
-  https://www.youtube.com/watch?v=JuxX-hfRg1o
-
-- Visually Explained — Logistic Regression  
-  https://www.youtube.com/watch?v=3bvM3NyMiE0
-
-- Gate Smashers — Logistic Regression Lecture  
-  https://www.youtube.com/watch?v=r8OjlgWpAI0
+- [GeekForGeeks - machine learning - Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/) 
+- [Learn Analytics - 2. Logistic Regression – Introduction](https://www.youtube.com/watch?v=JuxX-hfRg1o&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=3) 
+- [Visually Explained - Logistic Regression (and why it's different from Linear Regression)](https://www.youtube.com/watch?v=3bvM3NyMiE0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=4) 
+- [Gate Smashers - Lec-5: Logistic Regression with Simplest & Easiest Example | Machine Learning](https://www.youtube.com/watch?v=r8OjlgWpAI0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=6)
