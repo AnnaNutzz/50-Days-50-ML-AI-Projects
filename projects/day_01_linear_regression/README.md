@@ -45,7 +45,7 @@ We have the following dataset:
 
 ---
 
-# 1. Manual Calculations (Analytical Linear Regression)
+## 1. Manual Calculations (Analytical Linear Regression)
 
 ### Mean of x  
 $\text{Mean}(x) = \frac{8+10+12}{3} = 10 $
@@ -80,7 +80,7 @@ This line perfectly fits the data.
 
 ---
 
-# 2. What is MSE?
+## 2. What is MSE?
 
 MSE (Mean Squared Error) tells us **how wrong the model is**.
 
@@ -102,7 +102,7 @@ MSE is simply the **average of squared errors**.
 
 ---
 
-# 3. What is Gradient Descent?
+## 3. What is Gradient Descent?
 
 Gradient Descent is an optimization algorithm.  
 It helps us **find the best values of slope (w) and intercept (b)** by minimizing the error.
@@ -127,14 +127,14 @@ Where:
 
 ---
 
-# 4. Graph
+## 4. Graph
 
 ![Loss Curve](Figure_1.png)
 
 
 ---
 
-# 5. Why the Gradient Descent Curve Looks Like This
+## 5. Why the Gradient Descent Curve Looks Like This
 
 My curve:
 
@@ -147,7 +147,7 @@ This shape is **correct** and expected.
 
 ---
 
-# 6. Learned
+## 6. Learned
 
 1. **What does MSE measure?**  
     The average wrongness of the model, punishing big mistakes heavily.
@@ -169,7 +169,7 @@ This shape is **correct** and expected.
 # References
 - Chatgpt
 - [Gate Smashers - (Lec-4: Linear Regression📈 with Real life examples & Calculations | Easiest Explanation)](https://www.youtube.com/watch?v=zUQr6HAAKp4)
-- [GeekForGeeks - data science - gradient decent](https://www.geeksforgeeks.org/data-science/what-is-gradient-descent/)
+- [GeekForGeeks - data science - Gradient Decent](https://www.geeksforgeeks.org/data-science/what-is-gradient-descent/)
 - [StatQuest with Josh Starmer - Gradient Descent, Step-by-Step](https://www.youtube.com/watch?v=sDv4f4s2SB8)
 - [Google for Developers - Machine Learning Crash Course: Gradient Descent](https://www.youtube.com/watch?v=QoK1nNAURw4)
 
