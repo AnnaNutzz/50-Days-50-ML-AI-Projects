@@ -32,7 +32,11 @@ Where:
 
 Thus:
 
+<<<<<<< HEAD
 $$P(y=1) = \sigma(z)$$
+=======
+$$P(y=1) = \sigma(z)$$ 
+>>>>>>> c697fc25a4218d96aaa1dcad47ed89a159cebd43
 
 $$P(y=0) = 1 - \sigma(z)$$
 
@@ -56,6 +60,10 @@ $$P(y=0) = 1 - \sigma(z)$$
 Logistic Regression models the **log of odds** of an event occurring.
 
 ### Odds
+<<<<<<< HEAD
+=======
+
+>>>>>>> c697fc25a4218d96aaa1dcad47ed89a159cebd43
 $$\text{Odds} = \frac{P(x)}{1 - P(x)}$$
 
 Where:
@@ -201,4 +209,8 @@ $x = \frac{1.5}{0.6} = 2.5$
 - [GeekForGeeks - machine learning - Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/) 
 - [Learn Analytics - 2. Logistic Regression – Introduction](https://www.youtube.com/watch?v=JuxX-hfRg1o&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=3) 
 - [Visually Explained - Logistic Regression (and why it's different from Linear Regression)](https://www.youtube.com/watch?v=3bvM3NyMiE0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=4) 
+<<<<<<< HEAD
 - [Gate Smashers - Lec-5: Logistic Regression with Simplest & Easiest Example | Machine Learning](https://www.youtube.com/watch?v=r8OjlgWpAI0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=6)
+=======
+- [Gate Smashers - Lec-5: Logistic Regression with Simplest & Easiest Example | Machine Learning](https://www.youtube.com/watch?v=r8OjlgWpAI0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=6)
+>>>>>>> c697fc25a4218d96aaa1dcad47ed89a159cebd43
