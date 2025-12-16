@@ -133,7 +133,7 @@ Building strong neural foundations.
 | Day | Project | Status | Notes |
 |-----|---------|--------|-------|
 | 1   | Linear Regression From Scratch | Completed | Gradient descent + MSE visualized |
-| 2   | Logistic Regression From Scratch | Pending | |
+| 2   | Logistic Regression From Scratch | Completed | Sigmoid Curve + Decision Boundary visualised|
 | 3   | KNN Classifier | Pending | |
 | …   | … | … | … |
 | 50  | LLM Voice Assistant | Pending | |
