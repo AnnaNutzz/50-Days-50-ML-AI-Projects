@@ -15,7 +15,7 @@ K-Nearest Neighbors (KNN) is a supervised machine learning algorithm generally u
 ## Steps:
 
 1. Data Collection
-2. Calculate distance - Euclidean distance ![1766755558434](image/README/1766755558434.png)
+2. Calculate distance - Euclidean distance ![euclidean](euclidean.png)
 3. 
 
 
