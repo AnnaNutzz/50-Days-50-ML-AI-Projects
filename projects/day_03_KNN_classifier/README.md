@@ -1,4 +1,4 @@
-# Day 04 — K-Nearest Neighbors (KNN)
+# Day 03 — K-Nearest Neighbors (KNN)
 
 KNN is used to classify a new data entry in a dataset by finding the *k nearest neighbors* and determining which category the data point most likely belongs to.
 
