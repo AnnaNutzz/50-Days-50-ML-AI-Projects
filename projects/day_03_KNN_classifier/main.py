@@ -1,5 +1,5 @@
 """
-Day 04 — K-Nearest Neighbors (KNN)
+Day 03 — K-Nearest Neighbors (KNN)
 From scratch implementation (Classification + Regression)
 """
 
