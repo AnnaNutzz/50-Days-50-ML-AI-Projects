@@ -1,6 +1,6 @@
 # Notes — Linear & Logistic Regression (From Scratch)
 
-This notes section documents the **core theory, mathematics, intuition, and differences** between **Linear Regression** and **Logistic Regression**, written alongside hands-on implementations from scratch.  
+This notes section documents the **core theory, mathematics, intuition, and differences** between **Linear Regression** and **Logistic Regression**, written alongside hands-on implementations from scratch.
 The goal is **conceptual clarity first**, then code.
 
 ---
@@ -14,6 +14,7 @@ Linear Regression is a **supervised learning algorithm** used to model the relat
 It assumes a **linear relationship** between inputs and output.
 
 Examples:
+
 - Predicting house prices from area
 - Predicting salary from years of experience
 - Predicting temperature from time
@@ -35,6 +36,7 @@ $$
 $$
 
 Where:
+
 - $ w $ → weight (slope)
 - $ b $ → bias (intercept)
 - $ x $ → input feature
@@ -57,6 +59,7 @@ J(w, b) = \frac{1}{n} \sum (y - \hat{y})^2
 $$
 
 Why MSE?
+
 - Penalizes large errors heavily
 - Convex → guarantees a global minimum
 
@@ -74,6 +77,7 @@ Gradient descent updates:
 $$
 w := w - \alpha \frac{\partial J}{\partial w}
 $$
+
 $$
 b := b - \alpha \frac{\partial J}{\partial b}
 $$
@@ -99,6 +103,7 @@ Logistic Regression is a **supervised classification algorithm** used to predict
 Despite its name, logistic regression is **not a regression algorithm** in the traditional sense.
 
 Examples:
+
 - Pass / Fail
 - Yes / No
 - Fraud / Not Fraud
@@ -118,6 +123,7 @@ $$
 $$
 
 Where:
+
 - $ \hat{y} $ represents **probability**
 - $ 0 < \hat{y} < 1 $
 
@@ -126,11 +132,13 @@ Where:
 ### 2.3 Sigmoid Function — Why It Exists
 
 The sigmoid function:
+
 - Converts any real number into a probability
 - Is smooth and differentiable
 - Allows gradient-based optimization
 
 Properties:
+
 - $ \sigma(z) \to 1 $ as $ z \to +\infty $
 - $ \sigma(z) \to 0 $ as $ z \to -\infty $
 
@@ -149,6 +157,7 @@ $$
 $$
 
 Why log-odds?
+
 - Probability is bounded
 - Log-odds range from $ -\infty $ to $ +\infty $
 - Makes classification compatible with a linear model
@@ -164,6 +173,7 @@ J = -\frac{1}{n} \sum \Big[y \log(\hat{y}) + (1-y)\log(1-\hat{y})\Big]
 $$
 
 Why not MSE?
+
 - MSE performs poorly for classification
 - Cross-entropy strongly penalizes confident wrong predictions
 
@@ -174,6 +184,7 @@ Why not MSE?
 There is **no closed-form solution**.
 
 Parameters are learned using:
+
 - Maximum Likelihood Estimation (MLE)
 - Implemented via Gradient Descent
 
@@ -182,6 +193,7 @@ Gradients:
 $$
 \frac{\partial J}{\partial w} = \frac{1}{n} \sum (\hat{y} - y)x
 $$
+
 $$
 \frac{\partial J}{\partial b} = \frac{1}{n} \sum (\hat{y} - y)
 $$
@@ -203,11 +215,13 @@ w x + b = 0
 $$
 
 For 1D:
+
 $$
 x = -\frac{b}{w}
 $$
 
 For higher dimensions:
+
 - Line (2D)
 - Plane (3D)
 - Hyperplane (nD)
@@ -216,15 +230,15 @@ For higher dimensions:
 
 ## 3. Linear vs Logistic Regression (Comparison)
 
-| Aspect | Linear Regression | Logistic Regression |
-|-----|------------------|---------------------|
-| Task | Regression | Classification |
-| Output | Continuous | Probability (0–1) |
-| Activation | None | Sigmoid |
-| Loss | MSE | Cross-Entropy |
-| Boundary | Not applicable | Decision boundary |
-| Output range | (-∞, +∞) | (0, 1) |
-| Interpretation | Numeric prediction | Probability |
+| Aspect         | Linear Regression  | Logistic Regression |
+| -------------- | ------------------ | ------------------- |
+| Task           | Regression         | Classification      |
+| Output         | Continuous         | Probability (0–1)  |
+| Activation     | None               | Sigmoid             |
+| Loss           | MSE                | Cross-Entropy       |
+| Boundary       | Not applicable     | Decision boundary   |
+| Output range   | (-∞, +∞)         | (0, 1)              |
+| Interpretation | Numeric prediction | Probability         |
 
 ---
 
@@ -259,16 +273,14 @@ For higher dimensions:
 
 ## Quick Notes (At a Glance)
 
-|Linear Regression | Logistic Regression|
-|---|---|
-|Predicts **continuous values**| Predicts **categorical classes** (via probabilities)|
-|Fits a **best-fit straight line** to the data| Uses the **sigmoid (S-shaped) curve** |
-|Used to solve **regression problems**| Used to solve **classification problems**|
-|Output values are **unbounded**| Output is a **probability between 0 and 1** |
-|Common loss function: **Mean Squared Error (MSE)**| Common loss function: **Binary Cross-Entropy**|
-| - | Decision is made using a **threshold** (usually 0.5)|
-
-
+| Linear Regression                                       | Logistic Regression                                       |
+| ------------------------------------------------------- | --------------------------------------------------------- |
+| Predicts**continuous values**                     | Predicts**categorical classes** (via probabilities) |
+| Fits a**best-fit straight line** to the data      | Uses the**sigmoid (S-shaped) curve**                |
+| Used to solve**regression problems**              | Used to solve**classification problems**            |
+| Output values are**unbounded**                    | Output is a**probability between 0 and 1**          |
+| Common loss function:**Mean Squared Error (MSE)** | Common loss function:**Binary Cross-Entropy**       |
+| -                                                       | Decision is made using a**threshold** (usually 0.5) |
 
 ---
 
