@@ -136,6 +136,7 @@ Building strong neural foundations.
 | 2   | Logistic Regression From Scratch | Completed | Sigmoid Curve + Decision Boundary visualised|
 | 3   | KNN Classifier | Completed | Simple |
 | 4   | Naive Bayes Classfier | Completed | Simple | 
+| 5   | Decision Trees - Gini Impurity and Calculator UI | Completed | Simple |
 | …   | … | … | … |
 | 50  | LLM Voice Assistant | Pending | |
 
