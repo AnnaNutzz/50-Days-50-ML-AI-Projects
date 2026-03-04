@@ -1,87 +1,144 @@
-# Day 06 - Random Forest - Feature Importance Explainer
+# Day 06 — Random Forest: Feature Importance Explainer
 
-Random Forest or Random Decision Forests is an ensemble learning method for classification or regression. It corrects the [decision tress'](https://github.com/AnnaNutzz/50-Days-50-ML-AI-Projects/tree/main/projects/day_05_decision_trees) issue of overfitting of training dataset.
+Random Forest (also known as **Random Decision Forests**) is an **ensemble learning algorithm** used for both **classification and regression** tasks. It improves upon the limitations of [Decision Trees](https://github.com/AnnaNutzz/50-Days-50-ML-AI-Projects/tree/main/projects/day_05_decision_trees), particularly the tendency of single trees to **overfit the training dataset**.
+
+---
+
+# What is Random Forest?
+
+Random Forest is a machine learning algorithm that builds **multiple decision trees** and combines their predictions to produce a more accurate and stable result.
+
+Each tree is trained on a **random subset of the data** and uses **random subsets of features** when making splits. The predictions from all trees are then combined:
+
+- **Classification:** majority voting  
+- **Regression:** averaging the predictions  
+
+Because multiple models contribute to the final decision, Random Forest is considered an **ensemble learning technique**.
+
+This approach improves generalization and reduces variance compared to a single decision tree.
+
+---
+
+# Steps in the Random Forest Algorithm
+
+Random Forest works through three main steps:
+
+## 1. Bootstrapping
+
+A **bootstrapped dataset** is created from the original dataset using **sampling with replacement**.
+
+- Some samples may appear multiple times.
+- Some samples may not appear at all.
+
+Each bootstrapped dataset is used to train **one decision tree**.
 
 
-## What is Random Forest?
+## 2. Random Feature Selection
 
-Random Forest is a machine learning algorithm that uses many decision trees to make better predictions. Each tree looks at different random parts of the data and their results are combined by voting for classification or averaging for regression which makes it as ensemble learning technique. This helps in improving accuracy and reducing errors.
+While constructing each decision tree, the algorithm randomly selects a **subset of features at each split**.
 
-Random Forest algorithm has steps to it:
-1. **Bootstrapping**: Create a "bootstrapped" dataset from main dataset
-2. **Random Feature Selection**: Create randomized decision trees out of the bootstrapped dataset
-3. **Aggregating Predictions**: The final output is decided by choosing the output with the most frequency from the randomized decision trees 
+The best split is chosen only from this subset of features rather than all available features.
+
+This randomness helps reduce correlation between trees and improves model robustness.
+
+## 3. Aggregating Predictions
+
+Once all trees make predictions, the results are combined.
+
+For **classification**, the final prediction is determined by **majority voting** among all trees.
+
+For **regression**, the final prediction is the **average of all tree outputs**.
+
+This aggregation step produces the **final model prediction**.
+
+---
+
+# Handling Missing Values in Random Forest
+
+Random Forest can also be used to **estimate missing values** in a dataset.
+
+## Initial Guess
+
+If a dataset contains missing values, an initial **rough estimate ("bad guess")** is made.
+
+- For **categorical values**, the most common value among samples with the same class label is used.
+- For **numerical values**, the **median** of samples with the same class label is used.
 
 
-## Missing values in dataset
+## Refining the Guess Using Proximity
 
-If the dataset has missing values we make a 'bad guess' first and as we progress through with it we change our guess to a possibily a 'good guess' (better guess than before). \
-We find the most common value from the data having the same result as the data having missing value. \
-If it is a numeric value, we find the median with the values which have the same result as the data with missing values.
+The initial guess is refined by identifying **similar samples** in the dataset.
 
-Now to refine the 'bad guess' we made previously, we find the similiar data from the dataset. \
-We can do this by:
-1. building a random forest
-2. running all the data down all the trees finding the data having the exact match as the data with missing value \
-    *a. we make a proximity table for every tree which has shown similarities*
+This process works as follows:
 
-    example, lets say: \
-    sample 3 and 4 show similarity: \
-        it has a row for every sample and a column for every sample. so,
+1. A Random Forest is trained.
+2. All samples are passed through every tree.
+3. If two samples land in the **same leaf node**, they are considered similar.
 
-    | |1 |2 |3 |4 |
-    |---|---|---|---|---|
-    |1 |
-    |2 |
-    |3 | |||1|
-    |4 | ||1||
+A **proximity table** is constructed to track how frequently samples appear together in the same leaf nodes.
 
-    From the second tree we start to add $1$ to every pair of samples having the same leaf node. Lets say in tree 2, samples 2,3,4 showed similarity, then,
 
-    | |1 |2 |3 |4 |
-    |---|---|---|---|---|
-    |1 |
-    |2 | | |1|1|
-    |3 | |1| |2|
-    |4 | |1|2| |
+### Example
 
-    And in the tree 3, samples 3 and 4 showed similarity again, then,
+Suppose **sample 3 and sample 4** land in the same leaf node.
 
-    |  |1 |2 |3 |4 |
-    |---|---|---|---|---|
-    |1 |
-    |2 | | |1|1|
-    |3 | |1| |3|
-    |4 | |1|3| |
+The proximity table records this similarity.
 
-   *b. now that we have a proximity table, we can have proximity values in it*
+| |1 |2 |3 |4 |
+|---|---|---|---|---|
+|1 |
+|2 |
+|3 | | | |1|
+|4 | | |1| |
 
-    |  |1 |2 |3 |4 |
-    |---|---|---|---|---|
-    |1 |
-    |2 | | |1|1|
-    |3 | |1| |3|
-    |4 | |1|3| |
-        
-    lets say we have 10 datasets, we divide the proximity value by the total number of trees and use the proximity values of data sample having the missing value,
+If in another tree **samples 2, 3, and 4** land together, the table updates:
 
-    |  |1 |2 |3 |4 |
-    |---|---|---|---|---|
-    |1 |
-    |2 | | |0.1|0.1|
-    |3 | |0.1| |0.9|
-    |4 | |0.1|0.9| |
+| |1 |2 |3 |4 |
+|---|---|---|---|---|
+|1 |
+|2 | | |1|1|
+|3 | |1| |2|
+|4 | |1|2| |
 
-    the better guess for the value can be made by calculating the weighted frequency of the values using proximity values as weights:
+If in another tree **samples 3 and 4** match again:
 
-    $\text{weighted frequency = frequency of the value} \times \text{weight of the value}$
+| |1 |2 |3 |4 |
+|---|---|---|---|---|
+|1 |
+|2 | | |1|1|
+|3 | |1| |3|
+|4 | |1|3| |
 
-    $\text{weight of the value = proximity of the value/ total of all proximity of the sample}$
 
-    and if the value is numeric, \
-    $\text{weighted avg = sum of (all samples value} \times \text{proximity value)}$
+## Converting to Proximity Values
 
-and now that the guesses have been refined a little bit, we have to do the whole ordeal again. we do this continuously until the missing values converge/dont change everytime we recalculate.
+The proximity score is divided by the **total number of trees**.
+
+Example (10 trees):
+
+| |1 |2 |3 |4 |
+|---|---|---|---|---|
+|1 |
+|2 | | |0.1|0.1|
+|3 | |0.1| |0.9|
+|4 | |0.1|0.9| |
+
+These proximity values help determine which samples are **most similar** to the one with missing data.
+
+
+## Updating the Guess
+
+*For **categorical values**:*
+
+$\boxed{\text{weighted frequency = frequency} \times \text{weight}}$ 
+
+$\boxed{\text{weight = proximity / total proximity}}$
+
+*For **numerical values**:*
+
+$\boxed{\text{weighted average = Σ(sample value} \times \text{proximity value)}}$
+
+> This process is repeated multiple times until the estimates **converge** and stop changing significantly.
 
 ---
 
@@ -89,18 +146,21 @@ and now that the guesses have been refined a little bit, we have to do the whole
 
 ## 1. Bootstrapping
 
-Multiple datasets are created from the original dataset using sampling with replacement. Each dataset is used to train one decision tree.
+Multiple datasets are created from the original dataset using **sampling with replacement**.  
+Each dataset is used to train one decision tree.
 
 ## 2. Random Feature Selection
 
-When building each decision tree, the algorithm randomly selects a subset of features at each split and chooses the best split among them. This introduces randomness and reduces correlation between trees.
+When building each decision tree, the algorithm randomly selects a subset of features at each split and chooses the best split among them.
+
+This introduces randomness and reduces correlation between trees.
 
 ## 3. Aggregating Predictions
 
 The predictions from all trees are combined:
 
-+ Classification: majority voting
-+ Regression: average of predictions
+- **Classification:** majority voting  
+- **Regression:** average of predictions  
 
 The aggregated prediction becomes the final output of the Random Forest model.
 
@@ -158,17 +218,26 @@ class T1A,T1C,T2A,T2C,T3A,T3C green
 class T1B,T1D,T1E,T1F,T1G,T2B,T2D,T2E,T2F,T2G,T3B,T3D,T3E,T3F,T3G blue
 ```
 
+---
+
+# Limitations of Random Forest
+
+- **Less interpretable** compared to a single decision tree.
+- **Training can be computationally expensive** with very large datasets.
+- Feature importance from Random Forest can sometimes be **biased toward features with many unique values**.
 
 ---
 
-## Limitations of Random Forest 
+# What I Learned
 
+- How Random Forest reduces overfitting by combining multiple decision trees.
+- The importance of **bootstrapping and feature randomness**.
+- How predictions are aggregated using **majority voting or averaging**.
+- How Random Forest can also be used for **handling missing values through proximity calculations**.
 
+---
 
-## What I Learned
-
-
-## References
+# References
 
 1. [Gate Smashers - Lec-18: Random Forest 🌳 in Machine Learning 🧑‍💻👩‍💻](https://www.youtube.com/watch?v=DXqxXe3rep0&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=26)
 2. [StatQuest with Josh Starmer - StatQuest: Random Forests Part 1 - Building, Using and Evaluating](https://www.youtube.com/watch?v=O2L2Uv9pdDA&list=PLJ07VAG7bJEqbhbxYm79EOP4jBHdtJ7lN&index=12)
